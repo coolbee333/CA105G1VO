@@ -4,12 +4,12 @@ import java.util.*;
 
 public interface RegDAO_interface {
 	
-	public void insert(RegVO regVo);
-	public void update(RegVO regVo);
-	public void delete(RegVO regVo);
+	public void insert(RegVO regVO);
+	public void update(RegVO regVO);
+	public void delete(Integer reg_no);
     public RegVO findByPrimaryKey(Integer reg_no);
 	public List<RegVO> getAll();
 //	萬用複合查詢(傳入參數型態Map)(回傳 List)
-//  public List<EmpVO> getAll(Map<String, String[]> map); 
+//  public List<RegVO> getAll(Map<String, String[]> map); 
 
 }
