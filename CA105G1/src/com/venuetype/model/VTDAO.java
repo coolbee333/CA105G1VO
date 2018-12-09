@@ -33,13 +33,13 @@ public class VTDAO implements VTDAO_interface{
 	private static final String INSERT_STMT = 
 			"INSERT INTO venuetype (vt_no,vt_name) VALUES (?, ?)";
 		private static final String GET_ALL_STMT = 
-			"SELECT vt_no,vt_name FROM venuetype order by vt_no";
+			"SELECT vt_no,vt_name FROM venuetype ORDER BY vt_no";
 		private static final String GET_ONE_STMT = 
-			"SELECT vt_no,vt_name FROM venuetype where vt_no = ?";
+			"SELECT vt_no,vt_name FROM venuetype WHERE vt_no = ?";
 		private static final String DELETE = 
-			"DELETE FROM venuetype where vt_no = ?";
+			"DELETE FROM venuetype WHERE vt_no = ?";
 		private static final String UPDATE = 
-			"UPDATE venuetype set vt_name = ? where vt_no = ?";
+			"UPDATE venuetype SET vt_name = ? WHERE vt_no = ?";
 		
 	@Override
 	public void insert(VTVO vtVO) {

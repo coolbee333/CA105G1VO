@@ -8,9 +8,9 @@ public class TestReg {
 		
 		RegDAO_interface ri  = new RegDAO();
 		
-		ri.insert(new RegVO(103,"大安區"));
-		ri.update(new RegVO(105,"?區"));
-		ri.delete(103);
+		ri.insert(new RegVO(101,"大安區"));
+		ri.update(new RegVO(102,"?區"));
+		ri.delete(102);
 		
 		
 		RegVO reg = ri.findByPrimaryKey(101);

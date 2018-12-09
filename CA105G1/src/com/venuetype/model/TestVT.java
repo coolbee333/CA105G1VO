@@ -8,10 +8,10 @@ public class TestVT {
 		
 		VTDAO_interface vi  = new VTDAO();
 		
-		vi.insert(new VTVO("VT003","籃球"));
-		vi.insert(new VTVO("VT004","網球"));
-		vi.update(new VTVO("VT002","棒球"));
-		vi.delete("VT003");
+		vi.insert(new VTVO("VT005","籃球"));
+		vi.insert(new VTVO("VT006","網球"));
+		vi.update(new VTVO("VT007","棒球"));
+		vi.delete("VT004");
 		
 		
 		VTVO vt = vi.findByPrimaryKey("VT001");
