@@ -2,13 +2,13 @@ package com.region.model;
 
 import java.util.List;
 
-public class Test {
+public class TestReg {
 	
 	public static void main(String[] args) {
 		
 		RegDAO_interface ri  = new RegDAO();
 		
-		ri.insert(new RegVO(105,"大安區"));
+		ri.insert(new RegVO(103,"大安區"));
 		ri.update(new RegVO(105,"?區"));
 		ri.delete(103);
 		

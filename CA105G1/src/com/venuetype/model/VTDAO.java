@@ -1,13 +1,11 @@
-package com.region.model;
+package com.venuetype.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.region.model.RegVO;
-
 import java.sql.*;
 
-public class RegDAO implements RegDAO_interface{
+public class VTDAO implements VTDAO_interface{
 	
 //	private static DataSource ds = null;
 //	static {
@@ -33,19 +31,19 @@ public class RegDAO implements RegDAO_interface{
 	}
 	
 	private static final String INSERT_STMT = 
-			"INSERT INTO region (reg_no,reg_name) VALUES (?, ?)";
+			"INSERT INTO venuetype (vt_no,vt_name) VALUES (?, ?)";
 		private static final String GET_ALL_STMT = 
-			"SELECT reg_no,reg_name FROM region order by reg_no";
+			"SELECT vt_no,vt_name FROM venuetype order by vt_no";
 		private static final String GET_ONE_STMT = 
-			"SELECT reg_no,reg_name FROM region where reg_no = ?";
+			"SELECT vt_no,vt_name FROM venuetype where vt_no = ?";
 		private static final String DELETE = 
-			"DELETE FROM region where reg_no = ?";
+			"DELETE FROM venuetype where vt_no = ?";
 		private static final String UPDATE = 
-			"UPDATE region set reg_name = ? where reg_no = ?";
+			"UPDATE venuetype set vt_name = ? where vt_no = ?";
 		
 	@Override
-	public void insert(RegVO regVO) {
-
+	public void insert(VTVO vtVO) {
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 
@@ -54,8 +52,8 @@ public class RegDAO implements RegDAO_interface{
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(INSERT_STMT);
 
-			pstmt.setInt(1, regVO.getReg_no());
-			pstmt.setString(2, regVO.getReg_name());
+			pstmt.setString(1, vtVO.getVt_no());
+			pstmt.setString(2, vtVO.getVt_name());
 
 			pstmt.executeUpdate();
 
@@ -84,7 +82,7 @@ public class RegDAO implements RegDAO_interface{
 	}
 
 	@Override
-	public void update(RegVO regVO) {
+	public void update(VTVO vtVO) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -94,8 +92,8 @@ public class RegDAO implements RegDAO_interface{
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(UPDATE);
 
-			pstmt.setString(1, regVO.getReg_name());
-			pstmt.setInt(2, regVO.getReg_no());
+			pstmt.setString(1, vtVO.getVt_name());
+			pstmt.setString(2, vtVO.getVt_no());
 
 			pstmt.executeUpdate();
 
@@ -123,7 +121,7 @@ public class RegDAO implements RegDAO_interface{
 	}
 
 	@Override
-	public void delete(Integer reg_no) {
+	public void delete(String vt_no) {
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -133,7 +131,7 @@ public class RegDAO implements RegDAO_interface{
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(DELETE);
 
-			pstmt.setInt(1, reg_no);
+			pstmt.setString(1, vt_no);
 
 			pstmt.executeUpdate();
 
@@ -161,9 +159,9 @@ public class RegDAO implements RegDAO_interface{
 	}
 
 	@Override
-	public RegVO findByPrimaryKey(Integer reg_no) {
+	public VTVO findByPrimaryKey(String vt_no) {
 		
-		RegVO regVO = null;
+		VTVO vtVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -173,15 +171,15 @@ public class RegDAO implements RegDAO_interface{
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(GET_ONE_STMT);
 
-			pstmt.setInt(1, reg_no);
+			pstmt.setString(1, vt_no);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// regVo 也稱為 Domain objects
-				regVO = new RegVO();
-				regVO.setReg_no(rs.getInt("reg_no"));
-				regVO.setReg_name(rs.getString("reg_name"));
+				// vtVo 也稱為 Domain objects
+				vtVO = new VTVO();
+				vtVO.setVt_no(rs.getString("vt_no"));
+				vtVO.setVt_name(rs.getString("vt_name"));
 			}
 
 			// Handle any driver errors
@@ -212,15 +210,15 @@ public class RegDAO implements RegDAO_interface{
 				}
 			}
 		}
-		return regVO;
+		return vtVO;
 		
 	}
 
 	@Override
-	public List<RegVO> getAll() {
+	public List<VTVO> getAll() {
 		
-		List<RegVO> list = new ArrayList<RegVO>();
-		RegVO RegVO = null;
+		List<VTVO> list = new ArrayList<VTVO>();
+		VTVO vtVO = null;
 
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -233,11 +231,11 @@ public class RegDAO implements RegDAO_interface{
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// RegVO 也稱為 Domain objects
-				RegVO = new RegVO();
-				RegVO.setReg_no(rs.getInt("reg_no"));
-				RegVO.setReg_name(rs.getString("reg_name"));
-				list.add(RegVO); // Store the row in the list
+				// vtVO 也稱為 Domain objects
+				vtVO = new VTVO();
+				vtVO.setVt_no(rs.getString("vt_no"));
+				vtVO.setVt_name(rs.getString("vt_name"));
+				list.add(vtVO); // Store the row in the list
 			}
 
 			// Handle any driver errors
