@@ -25,7 +25,7 @@ public class VenueDAO implements VenueDAO_interface {
 	}
 	
 	private static final String INSERT =
-			"INSERT INTO venue (v_no ,v_name ,vt_no ,reg_no ,v_lat ,v_long ,v_link, v_address, ,v_phoneno, v_status) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			"INSERT INTO venue (v_no ,v_name ,vt_no ,reg_no ,v_lat ,v_long ,v_address ,v_phoneno ,v_status ,v_func) VALUES (?,?,?,?,?,?,?,?,?,?)";
 	private static final String GET_ALL_STMT =
 			"SELECT * FROM venue ORDER BY v_no";
 	private static final String GET_ONE_STMT =
@@ -50,10 +50,10 @@ public class VenueDAO implements VenueDAO_interface {
 			pstmt.setInt(4, venueVO.getReg_no());
 			pstmt.setDouble(5, venueVO.getV_lat());
 			pstmt.setDouble(6, venueVO.getV_long());
-			pstmt.setString(7, venueVO.getV_link());
-			pstmt.setString(8, venueVO.getV_address());
-			pstmt.setString(9, venueVO.getV_phoneno());
-			pstmt.setString(10, venueVO.getV_status());
+			pstmt.setString(7, venueVO.getV_address());
+			pstmt.setString(8, venueVO.getV_phoneno());
+			pstmt.setString(9, venueVO.getV_status());
+			pstmt.setString(10, venueVO.getV_func());
 
 			pstmt.executeUpdate();
 
@@ -151,7 +151,7 @@ public class VenueDAO implements VenueDAO_interface {
 				venueVO.setReg_no(rs.getInt("reg_no"));
 				venueVO.setV_lat(rs.getDouble("v_lat"));
 				venueVO.setV_long(rs.getDouble("v_long"));
-				venueVO.setV_link(rs.getString("v_link"));
+				venueVO.setV_func(rs.getString("v_func"));
 				venueVO.setV_address(rs.getString("v_address"));
 				venueVO.setV_phoneno(rs.getString("v_phoneno"));
 				venueVO.setV_status(rs.getString("v_status"));
@@ -213,7 +213,7 @@ public class VenueDAO implements VenueDAO_interface {
 				venueVO.setReg_no(rs.getInt("reg_no"));
 				venueVO.setV_lat(rs.getDouble("v_lat"));
 				venueVO.setV_long(rs.getDouble("v_long"));
-				venueVO.setV_link(rs.getString("v_link"));
+				venueVO.setV_func(rs.getString("v_func"));
 				venueVO.setV_address(rs.getString("v_address"));
 				venueVO.setV_phoneno(rs.getString("v_phoneno"));
 				venueVO.setV_status(rs.getString("v_status"));

@@ -8,32 +8,15 @@ public class VenueVO {
 	private Integer reg_no;
 	private Double v_lat;
 	private Double v_long;
-	private String v_link;
 	private String v_address;
 	private String v_phoneno;
 	private String v_status;
+	private String v_func;
 
 
 	public VenueVO() {
 		super();
 	}
-
-
-	public VenueVO(String v_no, String v_name, String vt_no, Integer reg_no, Double v_lat, Double v_long, String v_link,
-			String v_address, String v_phoneno, String v_status) {
-		super();
-		this.v_no = v_no;
-		this.v_name = v_name;
-		this.vt_no = vt_no;
-		this.reg_no = reg_no;
-		this.v_lat = v_lat;
-		this.v_long = v_long;
-		this.v_link = v_link;
-		this.v_address = v_address;
-		this.v_phoneno = v_phoneno;
-		this.v_status = v_status;
-	}
-
 
 	public String getV_no() {
 		return v_no;
@@ -95,13 +78,13 @@ public class VenueVO {
 	}
 
 
-	public String getV_link() {
-		return v_link;
+	public String getV_func() {
+		return v_func;
 	}
 
 
-	public void setV_link(String v_link) {
-		this.v_link = v_link;
+	public void setV_func(String v_func) {
+		this.v_func = v_func;
 	}
 
 
