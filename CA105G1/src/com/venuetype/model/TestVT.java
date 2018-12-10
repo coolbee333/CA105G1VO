@@ -8,9 +8,9 @@ public class TestVT {
 		
 		VTDAO_interface vi  = new VTDAO();
 		
-		vi.insert(new VTVO("VT005","籃球"));
-		vi.insert(new VTVO("VT006","網球"));
-		vi.update(new VTVO("VT007","棒球"));
+		vi.insert(new VTVO("VT009","籃球"));
+		vi.insert(new VTVO("VT010","網球"));
+		vi.update(new VTVO("VT011","棒球"));
 		vi.delete("VT004");
 		
 		
