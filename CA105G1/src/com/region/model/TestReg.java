@@ -49,9 +49,11 @@ public class TestReg {
 				
 				ri.insert(ro);
 				
+				System.out.println(++count);
+				
 			}	
 		}
-		System.out.println(++count);
+		
 	}
 
 }

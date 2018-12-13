@@ -5,7 +5,7 @@ import java.util.List;
 
 import java.sql.*;
 
-public class VEDAO implements VEDAO_interface{
+public class V_evaluationJDBCDAO implements V_evaluationDAO_interface{
 	
 //	private static DataSource ds = null;
 //	static {
@@ -34,11 +34,11 @@ public class VEDAO implements VEDAO_interface{
 	private static final String GET_ALL_STMT = "SELECT * FROM v_evaluation";
 	private static final String GET_ONE = "SELECT * FROM v_evaluation WHERE mem_no = ? AND v_no = ?";
 	private static final String UPDATE = "UPDATE v_evaluation set score=? WHERE mem_no = ? AND　v_no = ?";
-	private static final String DELETE = "DELETE FROM v_evaluation WHERE mem_no=? AND v_no= ?";
+	private static final String DELETE = "DELETE FROM v_evaluation WHERE mem_no= ? AND v_no= ?";
 	
 	
 	@Override
-	public void insert(VEVO veVO) {
+	public void insert(V_evaluationVO veVO) {
 		
 		Connection con = null;
 		PreparedStatement psmt = null;
@@ -76,7 +76,7 @@ public class VEDAO implements VEDAO_interface{
 	}
 
 	@Override
-	public void update(VEVO veVO) {
+	public void update(V_evaluationVO veVO) {
 		
 		Connection con = null;
 		PreparedStatement psmt = null;
@@ -151,9 +151,9 @@ public class VEDAO implements VEDAO_interface{
 	}
 
 	@Override
-	public VEVO findByPrimaryKey(String mem_no, String v_no) {
+	public V_evaluationVO findByPrimaryKey(String mem_no, String v_no) {
 		
-		VEVO veVO = null;
+		V_evaluationVO veVO = null;
 		Connection con = null;
 		PreparedStatement psmt = null;
 		ResultSet rs = null;
@@ -169,8 +169,8 @@ public class VEDAO implements VEDAO_interface{
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
-				veVO = new VEVO();
-				veVO.setMem_no(rs.getString("mem_vo"));
+				veVO = new V_evaluationVO();
+				veVO.setMem_no(rs.getString("mem_no"));
 				veVO.setV_no(rs.getString("v_no"));
 				veVO.setScore(rs.getInt("score"));
 			}
@@ -208,10 +208,10 @@ public class VEDAO implements VEDAO_interface{
 	}
 
 	@Override
-	public List<VEVO> getAll() {
+	public List<V_evaluationVO> getAll() {
 		
-		List<VEVO> list = new ArrayList<VEVO>();
-		VEVO veVO = null;
+		List<V_evaluationVO> list = new ArrayList<V_evaluationVO>();
+		V_evaluationVO veVO = null;
 		
 		Connection con = null;
 		PreparedStatement psmt = null;
@@ -224,8 +224,8 @@ public class VEDAO implements VEDAO_interface{
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
-				veVO = new VEVO();
-				veVO.setMem_no(rs.getString("mem_vo"));
+				veVO = new V_evaluationVO();
+				veVO.setMem_no(rs.getString("mem_no"));
 				veVO.setV_no(rs.getString("v_no"));
 				veVO.setScore(rs.getInt("score"));
 				list.add(veVO);

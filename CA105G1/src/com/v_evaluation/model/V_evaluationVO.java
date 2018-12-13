@@ -1,15 +1,15 @@
 package com.v_evaluation.model;
 
-public class VEVO {
+public class V_evaluationVO {
 	private String mem_no;
 	private String v_no;
 	private Integer score;
 	
-	public VEVO() {
+	public V_evaluationVO() {
 		super();
 	}
 	
-	public VEVO(String mem_no, String v_no, Integer score) {
+	public V_evaluationVO(String mem_no, String v_no, Integer score) {
 		super();
 		this.mem_no = mem_no;
 		this.v_no = v_no;
