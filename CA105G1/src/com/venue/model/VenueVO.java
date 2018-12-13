@@ -8,6 +8,7 @@ public class VenueVO {
 	private Integer reg_no;
 	private Double v_lat;
 	private Double v_long;
+	private String v_pic;
 	private String v_address;
 	private String v_phoneno;
 	private String v_status;
@@ -86,6 +87,15 @@ public class VenueVO {
 	public void setV_func(String v_func) {
 		this.v_func = v_func;
 	}
+	
+	
+	public String getV_pic() {
+		return v_pic;
+	}
+
+	public void setV_pic(String v_pic) {
+		this.v_pic = v_pic;
+	}
 
 
 	public String getV_address() {
@@ -116,6 +126,32 @@ public class VenueVO {
 	public void setV_status(String v_status) {
 		this.v_status = v_status;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((v_name == null) ? 0 : v_name.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		VenueVO other = (VenueVO) obj;
+		if (v_name == null) {
+			if (other.v_name != null)
+				return false;
+		} else if (!v_name.equals(other.v_name))
+			return false;
+		return true;
+	}
+	
 	
 	
 	

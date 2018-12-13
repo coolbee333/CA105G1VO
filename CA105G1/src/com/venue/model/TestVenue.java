@@ -5,7 +5,7 @@ public class TestVenue {
 	
 	public static void main(String[] args) {
 		
-		VenueDAO_interface vi = new VenueDAO();
+		VenueDAO_interface vi = new VenueJDBCDAO();
 		
 		VenueVO vo = vi.findByPrimaryKey("V000003");
 		

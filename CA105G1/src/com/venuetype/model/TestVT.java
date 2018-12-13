@@ -2,26 +2,24 @@ package com.venuetype.model;
 
 import java.util.List;
 
+import org.json.JSONObject;
+
 public class TestVT {
 	
 	public static void main(String[] args) {
 		
-		VTDAO_interface vi  = new VTDAO();
+		VenueTypeDAO_interface vi  = new VenueTypeJDBCDAO();
+	
+//		
+//		VenueTypeVO vt = vi.findByPrimaryKey("VT001");
+//		System.out.println(vt.getVt_name());
+//		
+//		System.out.println("========================");
 		
-		vi.insert(new VTVO("VT009","籃球"));
-		vi.insert(new VTVO("VT010","網球"));
-		vi.update(new VTVO("VT011","棒球"));
-		vi.delete("VT004");
+		List<VenueTypeVO> vtVO = vi.getAll();
 		
 		
-		VTVO vt = vi.findByPrimaryKey("VT001");
-		System.out.println(vt.getVt_name());
-		
-		System.out.println("========================");
-		
-		List<VTVO> vTVO = vi.getAll();
-		
-		for (VTVO x : vTVO) {
+		for (VenueTypeVO x : vtVO) {
 			System.out.println(x.getVt_no() + " " + x.getVt_name());
 		}
 		

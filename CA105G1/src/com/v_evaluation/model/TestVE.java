@@ -6,24 +6,24 @@ public class TestVE {
 		
 	public static void main(String[] args) {
 		
-		VEDAO_interface vei  = new VEDAO();
+		V_evaluationDAO_interface vei  = new V_evaluationJDBCDAO();
 		
-//		vei.insert(new VEVO("M001","V000002", 3));
+//		vei.insert(new V_evaluationVO("M005","V000002", 3));
 //		vei.insert(new VEVO("M002","V000003", 2));
 //		vei.update(new VEVO("M001","V000002", 4));
-//		vei.delete("M001", "V000003");
+//		vei.delete("M001", "V000001");
 //		
 //		
-		VEVO ve = vei.findByPrimaryKey("M001", "V000003");
-		System.out.println(ve.getScore());
-		
+//		V_evaluationVO ve = vei.findByPrimaryKey("M002", "V000002");
+//		System.out.println(ve.getScore());
+//		
 //		System.out.println("========================");
-//		
-//		List<VEVO> veVO = vei.getAll();
-//		
-//		for (VEVO x : veVO) {
-//			System.out.println(x.getMem_no() + x.getV_no() + x.getScore());
-//		}
+		
+		List<V_evaluationVO> veVO = vei.getAll();
+		
+		for (V_evaluationVO x : veVO) {
+			System.out.println(x.getMem_no() + " " + x.getV_no() + " " + x.getScore());
+		}
 		
 	}
 }

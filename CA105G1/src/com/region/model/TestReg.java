@@ -1,29 +1,57 @@
 package com.region.model;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class TestReg {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, JSONException {
 		
-		RegDAO_interface ri  = new RegDAO();
+		int count = 0;
 		
-		ri.insert(new RegVO(101,"大安區"));
-		ri.update(new RegVO(102,"?區"));
-		ri.delete(102);
+		RegDAO_interface ri = new RegJDBCDAO();
 		
+        BufferedReader br = new BufferedReader(new FileReader("src\\DB\\postcode.json"));
 		
-		RegVO reg = ri.findByPrimaryKey(101);
-		System.out.println(reg.getReg_name());
+		StringBuilder sb = new StringBuilder();
 		
-		System.out.println("========================");
+		String str;
 		
-		List<RegVO> regVO = ri.getAll();
-		
-		for (RegVO x : regVO) {
-			System.out.println(x.getReg_no() + " " + x.getReg_name());
+		try {
+			while ((str = br.readLine()) != null) {
+				sb.append(str);
+			}
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
+		JSONArray jArray = new JSONArray(sb.toString());
 		
+		for (int i = 0; i < jArray.length(); i++) {
+			
+			JSONObject reg = jArray.getJSONObject(i);
+			
+			JSONArray  dist = reg.getJSONArray("districts");
+			
+			for (int j = 0; j < dist.length(); j++) {
+				
+				RegVO ro = new RegVO();
+				
+				ro.setReg_name(reg.getString("name"));
+				ro.setReg_no(dist.getJSONObject(j).getInt("zip"));
+				ro.setReg_dist(dist.getJSONObject(j).getString("name"));
+				
+				ri.insert(ro);
+				
+			}	
+		}
+		System.out.println(++count);
 	}
 
 }
